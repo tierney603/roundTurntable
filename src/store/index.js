@@ -5,12 +5,17 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    count:1
   },
-  getters: {
+  getters: {//计算属性
+  
   },
-  mutations: {
+  mutations: {//事件
+    addCount:()=>{
+      this.$store.state.count+=1
+    }
   },
-  actions: {
+  actions: {//支持异步
   },
   modules: {
   }
