@@ -23,7 +23,9 @@
     <el-button @click="goTestTurn">
       抽奖2
     </el-button>
-    
+    <el-button @click="goTestProps">
+      goTestProps
+    </el-button>
   </div>
 </template>
 
@@ -96,6 +98,10 @@ export default {
     },
     goTestTurn(){
       this.$router.push('/testTurn')
+
+    },
+    goTestProps(){
+      this.$router.push('/testProps')
 
     }
   }

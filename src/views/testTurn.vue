@@ -85,7 +85,7 @@ export default {
 
       /* 转盘样式的选项*/
       turntableStyleOption: {
-        prizeBc: ['#f9ebdf', '#f8dfc2'], // 商品背景色
+        // prizeBc: ['#f9ebdf', '#f8dfc2'], // 商品背景色
         borderColor: '#fff', // 转盘的外边框颜色
         fontColor: "#111",//字体颜色
         fontSize: 10,//文字大小

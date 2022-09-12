@@ -1,8 +1,7 @@
 <template>
   <div class="dial_com" :style="{width: turntableStyleOption.size+'px'}">
 
-    <div 
-    class="dial_plate"
+    <div class="dial_plate"
       :style="{width: turntableStyleOption.size+'px',height:turntableStyleOption.size+'px',backgroundColor:turntableStyleOption.borderColor}">
       <!-- 表盘 -->
       <div class="turntable" ref="turntable"
@@ -89,7 +88,7 @@ export default {
         ]
       }
     },
-    
+
     rotateCircle: {
       default: 6,
     },
@@ -132,6 +131,7 @@ export default {
       startRotateDegree: 0,
       rotateAngle: 0,
       rotateTransition: "",
+      prizeBcOption:  ['#f9ebdf', '#f8dfc2'], // 商品背景色
     };
   },
   methods: {
@@ -226,8 +226,7 @@ export default {
       // 初始化奖品背景色
       const elementsAreEqual = array => array.every(el => el === array[0] && el === undefined)
       let notSetPrizeBc = elementsAreEqual(prizeBgColors)
-      let prizeBcOption = this.turntableStyleOption.prizeBc
-
+      let prizeBcOption = this.turntableStyleOption.prizeBc||this.prizeBcOption
       // 如果没有逐个设置颜色
       if (notSetPrizeBc) {
         let colorNum = 0
@@ -238,6 +237,9 @@ export default {
             if (colorNum >= prizeBcOption.length) {
               colorNum = 0
             }
+          } else {
+            colorNum = 0
+
           }
         }
       }
@@ -252,12 +254,12 @@ export default {
 .dial_com {
   position: relative;
   width: auto;
-  padding:10px;
+  padding: 10px;
   /* overflow: hidden; */
   /* background-color: #111; */
 }
 
-/* 表盘 */   
+/* 表盘 */
 .dial_plate {
   background-color: rgba(255, 255, 255, 1);
   /* position: relative; */
@@ -268,7 +270,7 @@ export default {
 
 /* 表盘边框 */
 .dial_layout {
-z-index: 10;
+  z-index: 10;
 }
 
 .turntable {
