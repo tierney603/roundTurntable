@@ -151,7 +151,7 @@ export default {
 
     .map {
         flex: 8;
-        background-color: red;
+        // background-color: red;
         // display: flex;
         // justify-content: center;
         // align-items: center;

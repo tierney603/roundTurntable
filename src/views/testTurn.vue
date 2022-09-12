@@ -1,33 +1,29 @@
 <template>
-  <div class="app">
+  <div class="testTurn">
     <h1>剩余抽奖次数：{{ num }}</h1>
-    <round-turntable 
-    ref="roundTurntable" 
-    :prizeData="prizeData" 
-    :turntableStyleOption="turntableStyleOption"
-    @endRotation="endRotation" 
-    >
-    </round-turntable>
-
+    <Turntable ref="roundTurntable" :prizeData="prizeData"
+      :turntableStyleOption="turntableStyleOption" @endRotation="endRotation">
+    </Turntable>
     <div class="btnBox">
-    大小：<input type="text" v-model="turntableStyleOption.size">
-    <button @click="initRoundTurntable">生成</button>
-    <button @click="startRotation">抽奖</button>
-  </div>
-    <!-- <img src="../../assets/p.png" alt=""> -->
+
+      大小：<input type="text" v-model="turntableStyleOption.size">
+      <button @click="initRoundTurntable">生成</button>
+      <button @click="startRotation">抽奖</button>
+    </div>
+
   </div>
 </template>
-
+  
 <script>
-import roundTurntable from '../../components/Turntable.vue';
+import Turntable from '../components/Turntable.vue'
+
 export default {
-  name: 'App',
+  name: 'app',
   components: {
-    roundTurntable
+    Turntable
   },
   data() {
     return {
-      // 转盘上的奖品数据,也可以单独进行设置奖品背景色
       prizeData: [
         {
           id: 1,
@@ -94,28 +90,32 @@ export default {
         fontColor: "#111",//字体颜色
         fontSize: 10,//文字大小
         imgSize: 40,//奖品图片大小
-        size: 350,//转盘大小
+        size: 300,//转盘大小
         duringTime: 5,// 转动需要持续的时间（s）
         rotateCircle: 10,// 转动的圈数
-        pointerSetup:{
-          src:require("../../assets/p.png"),
-          top:-60,
-          botttom:0,
-          left:0,
-          right:0,
-          rotate:0,//旋转
+        pointerSetup: {
+          // src: require("../assets/p.png"),
+          top: -60,
+          botttom: 0,
+          left: 0,
+          right: 0,
+          rotate: 0,//旋转
         },
-        dialLayoutSetup:{
-          src:require("../../assets/dialLayout.png"),
-        }
-        
-
+        dialLayoutSetup: {
+          src: require("../assets/dialLayout.png"),
+          size:370,
+        },
 
       },
       prizeIndex: 1,// 中奖的奖品的index默认指向
       isLocking: false,// 用来锁定转盘，避免同时多次点击转动
       num: 100,// 剩余抽奖次数
     }
+  },
+  watch: {
+    'turntableStyleOption.size'(oldV,newV) {
+     console.log(oldV,newV)
+    },
   },
   methods: {
     initRoundTurntable() {
@@ -171,15 +171,22 @@ export default {
   }
 }
 </script>
+  
+<style>
+.testTurn {
+  width: 500px;
+  margin: 0 auto;
+  height: 900px;
+  background-color: rgb(216, 216, 216);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-<style scoped>
-.app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin: 0;
-  padding: 0;
+.btnBox {
+  position: absolute;
+  bottom: 0;
 }
 </style>
+  

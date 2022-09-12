@@ -19,6 +19,11 @@
     <el-button @click="goTurntable">
       抽奖
     </el-button>
+    
+    <el-button @click="goTestTurn">
+      抽奖2
+    </el-button>
+    
   </div>
 </template>
 
@@ -87,6 +92,10 @@ export default {
     },
     goTurntable(){
       this.$router.push('/Turntable')
+
+    },
+    goTestTurn(){
+      this.$router.push('/testTurn')
 
     }
   }

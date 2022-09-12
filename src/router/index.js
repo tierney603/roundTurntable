@@ -33,6 +33,11 @@ const routes = [
     path: '/Turntable',
     name: 'Turntable',
     component: () => import( '../views/Turntable/index.vue')
+  },
+  {
+    path: '/testTurn',
+    name: 'testTurn',
+    component: () => import( '../views/testTurn.vue')
   }
   
 ]
